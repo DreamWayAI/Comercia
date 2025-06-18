@@ -1,1 +1,0 @@
-PoliBest Generator — JS версія з генерацією Word і PDF
