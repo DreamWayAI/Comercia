@@ -510,6 +510,263 @@ const ProposalBuilder = () => {
                           onChange={(e) => updateMaterial(material.id, 'category', e.target.value as Material['category'])}
                           className="w-full px-3 py-2 rounded border border-gray-300 focus:ring-2 focus:ring-red-500"
                         >
-                          <option value="primer">Ґрунтівка</option>
+                          <option value="paint">Фарба/Лак</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Preview Tab */}
+            {activeTab === 'preview' && (
+              <div className="space-y-8">
+                <div className="border-l-4 polibest-border-red pl-6">
+                  <h3 className="text-2xl font-bold text-gray-800">Попередній перегляд</h3>
+                </div>
+
+                <div className="bg-white border rounded-xl p-10 space-y-8">
+                  {/* Company Details at Very Top */}
+                  <div className="text-center text-sm text-gray-700 mb-8">
+                    <p>03195, м. Київ, пров, Павла Лії, буд. 2І</p>
+                    <p>ЄДРПОУ 41842552 UA623052990000026000036206860</p>
+                    <p>Печерська філія ПАТ КБ "ПРИВАТБАНК", м.Київ МФО 300711</p>
+                    <p>Витяг з реістру ПДВ No1826504500200</p>
+                    <p>ІПН No 418425526506</p>
+                    <p>Тел.:067-402-11-17, 093-512-58-38</p>
+                  </div>
+
+                  {/* Header */}
+                  <div className="text-center border-b-2 polibest-border-red pb-8">
+                    <div className="flex items-center justify-center space-x-4 mb-6">
+                      <div className="bg-gradient-to-br from-red-600 to-red-700 p-4 rounded-xl">
+                        <div className="text-white font-bold text-3xl">P</div>
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold polibest-red">ТОВ«ВедеВперед»</div>
+                      </div>
+                    </div>
+                    
+                    <h1 className="text-3xl font-bold text-gray-900 mb-4 uppercase">КОМЕРЦІЙНА ПРОПОЗИЦІЯ</h1>
+                    <h2 className="text-xl font-bold mb-4 uppercase polibest-red">{formData.productDescription}</h2>
+                    <h3 className="text-2xl font-bold mb-6 polibest-red">{formData.productName} (без розчинників)</h3>
+                    <div className="bg-red-50 rounded-lg p-4 inline-block">
+                      <p className="text-gray-800 font-semibold">
+                        на бетонній підлозі в приміщенні площею <span className="text-xl font-bold polibest-red">{formData.areas.reduce((sum, area) => sum + area.size, 0)} кв.м.</span>
+                      </p>
+                      <p className="text-gray-700 mt-2">Місцезнаходження: <span className="font-semibold">{formData.country}</span></p>
+                    </div>
+                  </div>
+
+                  {/* Product Description */}
+                  <div className="space-y-4">
+                    <p className="text-gray-700 leading-relaxed">
+                      Полімерне покриття без розчинників PoliBest™ 911 рекомендується для облаштування бетонних 
+                      підлог і стін, як декоративно-захисне покриття з високою стійкістю до механічних і хімічних 
+                      пошкоджень і в якості захисту на відкритих бетонних майданчиках в промисловому будівництві.
+                    </p>
+                    
+                    <div>
+                      <h4 className="text-lg font-bold text-gray-800 mb-3">Матеріали PoliBest TM 911 використовуються для захисту:</h4>
+                      <ul className="text-gray-700 space-y-1 ml-4">
+                        <li>▪ автомобільні бетонні дороги, бетонні плити, злітно-посадкові смуги, підпірні стіни;</li>
+                        <li>▪ підлоги та стіни паркінгів, автостоянок та автосервісу;</li>
+                        <li>▪ підлоги в морозильних камерах і холодільниках</li>
+                        <li>▪ залізобетонні конструкції і споруди (ангари, склади, заводи, мости, тунелі);</li>
+                        <li>▪ виробничі підлоги і стіни у виробничих приміщеннях, приміщеннях харчових підприємств;</li>
+                        <li>▪ підлоги фармацевтичних підприємств;</li>
+                        <li>▪ підлоги та стіни промислових цехів хімічного виробництва;</li>
+                        <li>▪ підлоги на підприємствах торгівлі та громадського харчування;</li>
+                        <li>▪ підлоги в лікувальних та дитячих установах;</li>
+                        <li>▪ підлоги в торгово-розважальних центрах;</li>
+                      </ul>
+                    </div>
+
+                    <p className="text-gray-700">
+                      Виробництво зносостійких, безпільних, морозостійких, ультрафіолетостійких, хімічно стійких, 
+                      гідроізоляційних, антикорозійних підлог. Також використовується для захисту металевих конструкцій.
+                    </p>
+                  </div>
+
+                  {/* Areas */}
+                  {formData.areas.map((area, index) => (
+                    <div key={area.id} className="border-t-2 border-gray-200 pt-8">
+                      <h4 className="text-xl font-bold text-gray-800 mb-4">
+                        {area.name} {area.size} м.кв{area.isSpecial ? '. іскробезпечне' : ''}
+                      </h4>
+                      
+                      <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                        <p className="font-medium polibest-red">
+                          Захисне полімерне покриття {formData.productName} ({area.layers} шари)
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          Дилерська знижка {area.discount}%. Разом = <span className="font-bold polibest-red">{calculateAreaCost(area).toLocaleString('uk-UA', { minimumFractionDigits: 2 })} грн</span>
+                        </p>
+                        <p className="text-sm font-medium polibest-red">
+                          {formData.warranty} років гарантії на матеріали при дотримані всіх наших інструкцій
+                        </p>
+                      </div>
+
+                      {/* Materials Table */}
+                      <div className="overflow-x-auto mb-6">
+                        <table className="w-full text-sm border-collapse border border-gray-300">
+                          <thead className="bg-gray-100">
+                            <tr>
+                              <th className="text-left p-3 border border-gray-300 font-bold">№</th>
+                              <th className="text-left p-3 border border-gray-300 font-bold">Матеріали</th>
+                              <th className="text-left p-3 border border-gray-300 font-bold">Витрата на 1 кв.м., кг</th>
+                              <th className="text-left p-3 border border-gray-300 font-bold">Загальна кількість, кг</th>
+                              <th className="text-left p-3 border border-gray-300 font-bold">Ціна грн за 1 кг.з ПДВ</th>
+                              <th className="text-left p-3 border border-gray-300 font-bold">Підсумок грн з ПДВ</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {formData.materials
+                              .filter(material => area.selectedMaterials && area.selectedMaterials.includes(material.id))
+                              .map((material, materialIndex) => {
+                                let consumption = material.consumption;
+                                if (area.isSpecial && material.category === 'primer') {
+                                  consumption = material.consumption * 1.2;
+                                }
+                                const quantity = area.size * consumption;
+                                const cost = quantity * material.pricePerKg;
+                                
+                                return (
+                                  <tr key={material.id}>
+                                    <td className="p-3 border border-gray-300">{materialIndex + 1}</td>
+                                    <td className="p-3 border border-gray-300">{material.name} колір за погодженням із замовником</td>
+                                    <td className="p-3 border border-gray-300">{consumption.toFixed(3)}</td>
+                                    <td className="p-3 border border-gray-300">{quantity.toFixed(0)}</td>
+                                    <td className="p-3 border border-gray-300">{material.pricePerKg.toFixed(2)}</td>
+                                    <td className="p-3 border border-gray-300 font-semibold polibest-red">{cost.toLocaleString('uk-UA', { minimumFractionDigits: 2 })}</td>
+                                  </tr>
+                                );
+                              })}
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <div className="text-right mb-6">
+                        <span className="text-lg font-bold polibest-red">
+                          Загальна вартість матеріалів з ПДВ {formData.materials
+                            .filter(material => area.selectedMaterials && area.selectedMaterials.includes(material.id))
+                            .reduce((total, material) => {
+                              let consumption = material.consumption;
+                              if (area.isSpecial && material.category === 'primer') {
+                                consumption = material.consumption * 1.2;
+                              }
+                              const quantity = area.size * consumption;
+                              const cost = quantity * material.pricePerKg;
+                              return total + cost;
+                            }, 0).toLocaleString('uk-UA', { minimumFractionDigits: 2 })} грн
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+
+                  {/* Total */}
+                  <div className="border-t-4 polibest-border-red pt-8 text-center">
+                    <h2 className="text-4xl font-bold polibest-red mb-4">
+                      Загальна сума з ПДВ = {calculateTotalCost().toLocaleString('uk-UA', { minimumFractionDigits: 2 })} грн
+                    </h2>
+                    <p className="text-gray-700 font-medium mb-6">
+                      Термін виготовлення до {formData.productionDays} календарних днів, після оплати 100%
+                    </p>
+                  </div>
+
+                  {/* Product Benefits */}
+                  <div className="bg-gray-50 rounded-xl p-6 space-y-4">
+                    <p className="text-gray-700">
+                      Полімерне покриття без токсичного запаху при нанесенні на бетонну поверхню глибоко проникає 
+                      в бетон, додатково зміцнюючи поверхню. Висока адгезія забезпечує повну гідроізоляцію поверхні, 
+                      не відшаровується від поверхні з часом, є паропроникним матеріалом. Поверхні з PoliBest 911 
+                      практичні і прості в догляді. Використовується для ремонту і зміцнення старих бетонних підлог.
+                    </p>
+                    
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <h5 className="font-semibold text-gray-800 mb-2">Основні переваги PoliBest 911:</h5>
+                        <ul className="text-sm text-gray-700 space-y-1">
+                          <li>▪ Матеріал без запаху та розчинників</li>
+                          <li>▪ Економічна витрата</li>
+                          <li>▪ Висока стійкість до механічних і хімічних пошкоджень</li>
+                          <li>▪ Легко наноситься: валик, шпатель, розпилювач</li>
+                          <li>▪ Знепилення</li>
+                          <li>▪ Максимальне затвердіння бетонної поверхні</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h5 className="font-semibold text-gray-800 mb-2">Додаткові властивості:</h5>
+                        <ul className="text-sm text-gray-700 space-y-1">
+                          <li>▪ Тривалий термін служби покриття</li>
+                          <li>▪ Паропроникний</li>
+                          <li>▪ Не втрачає своїх властивостей при низьких температурах</li>
+                          <li>▪ Стійкий до ультрафіолету</li>
+                          <li>▪ Можна використовувати на відкритих майданчиках</li>
+                          <li>▪ Широкий асортимент покриттів</li>
+                          <li>▪ Пожежобезпечний, так як не має летких речовин в складі</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Technical Parameters */}
+                  <div className="bg-gray-50 rounded-xl p-6">
+                    <h4 className="text-lg font-bold text-gray-800 mb-4">ТЕХНІЧНІ ПАРАМЕТРИ МАТЕРІАЛУ</h4>
+                    <div className="grid md:grid-cols-2 gap-6 text-sm">
+                      <div className="space-y-2">
+                        <p><span className="font-semibold">Тип:</span> двокомпонентні</p>
+                        <p><span className="font-semibold">Колір:</span> Згідно замовленню, RAL</p>
+                        <p><span className="font-semibold">Термін служби в змішаному стані:</span></p>
+                        <div className="ml-4">
+                          <p>З температурою:</p>
+                          <p>+10°С - 3 години</p>
+                          <p>+20°С - 1,5 години</p>
+                          <p>+30°С - 30 хв.</p>
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <p><span className="font-semibold">Початок поверхневої експлуатації після повної полімірації:</span></p>
+                        <div className="ml-4">
+                          <p>24 години - навантаження на пішоходів</p>
+                          <p>5 днів - механічні навантаження (переміщення обладнання)</p>
+                          <p>7 днів - хімічна обробка миючими засобами</p>
+                        </div>
+                        <p><span className="font-semibold">Механічні властивості (через 14 днів +20°С):</span> Адгезія покриття перевершує міцність бетону</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Footer */}
+                  <div className="text-center border-t-2 border-gray-200 pt-6">
+                    <div className="space-y-2 text-gray-700">
+                      <p className="font-bold">Генеральний директор</p>
+                      <p className="font-bold">ТОВ "ВЕДЕВПЕРЕД"</p>
+                      <p className="font-bold">Гаврилов Володимир</p>
+                      <p className="font-semibold polibest-red">Власник ТМ PoliBest</p>
+                      <p className="font-semibold polibest-red">Виробник продукції ТМ PoliBest</p>
+                      <p className="mt-4 font-semibold">vedevpered@gmail.com</p>
+                      <p>+38(093)-512-58-38</p>
+                    </div>
+                    
+                    <div className="flex items-center justify-center space-x-4 mt-6">
+                      <div className="bg-gradient-to-br from-red-600 to-red-700 p-3 rounded-lg">
+                        <div className="text-white font-bold text-xl">P</div>
+                      </div>
+                      <div className="text-2xl font-bold polibest-red">ТМ PoliBest</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProposalBuilder;="primer">Ґрунтівка</option>
                           <option value="enamel">Емаль</option>
                           <option value
