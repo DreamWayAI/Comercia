@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Force red color for important elements */
+.force-red {
+  color: #DC2626 !important;
+}
+
+.force-red-text * {
+  color: #DC2626 !important;
+}
+
+/* PoliBest custom styles */
+.polibest-red {
+  color: #DC2626;
+}
+
+.polibest-bg-red {
+  background-color: #DC2626;
+}
+
+.polibest-border-red {
+  border-color: #DC2626;
+}
